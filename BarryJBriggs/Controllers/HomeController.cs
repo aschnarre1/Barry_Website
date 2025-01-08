@@ -18,7 +18,17 @@ namespace BarryJBriggs.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Works()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }

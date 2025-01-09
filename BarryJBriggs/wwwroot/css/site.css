@@ -151,3 +151,26 @@ figcaption {
 .aboutMeText{
     font-size:1.2em;
 }
+
+
+@media (max-width: 768px) {
+    .aboutMe {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .aboutMeImg {
+        width: 60%; 
+        margin-right: 0; 
+        margin-bottom: 20px;
+    }
+
+    .aboutMeParagraph {
+        text-align: left;
+    }
+    .aboutMeText {
+        font-size: 1em;
+    }
+}
+
+

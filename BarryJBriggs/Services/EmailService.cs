@@ -29,7 +29,7 @@ namespace BarryJBriggs.Services
                 {
                     From = new MailAddress(fromEmail),
                     Subject = $"New Message from {name}",
-                    Body = $"Website: {website}\nMessage:\n{message}",
+                    Body = $"\nEmail:\n{fromEmail}\nWebsite:\n{website}\nMessage:\n{message}",
                     IsBodyHtml = false,
                 };
 

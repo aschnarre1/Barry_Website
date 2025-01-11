@@ -3,51 +3,58 @@
 }
 @model Message
 
-<div class="container-fluid">
-    <div id="header">
-        <h1>Contact</h1>
-    </div>
+
+<div id="header">
+   <h1>Contact</h1>
+</div>
+<div class="text-center, contactIntro">
     <p>
         If you have inquiries, please enter your name, email and if you have a website or a link you could provide, definitely leave it below. 
         Then in just a couple short sentences describe the project you are looking to create. This would help me get a sense of what you are looking 
         for so I can better understand how I can help you.
     </p>
+</div>
 
-    <h3>Get in Touch</h3>
-    <p>
-        <a href="mailto:barryjbriggs@gmail.com">barryjbriggs@gmail.com</a><br />
-        <a href="tel:+1-206-909-2507">(206) 909-2507</a><br />
-        YouTube: <a href="https://www.youtube.com/channel/UCc3N2MUPKDqbIySxF64jwYg">Barry J. Briggs</a><br />
-        Instagram: <a href="https://www.instagram.com/barryjbriggs/">barryjbriggs</a><br />
-    </p>
+<div class="contactMePage">
+    <div class="getInTouch">
+        <h3>Get in Touch</h3>
+        <p>
+            <a href="mailto:barryjbriggs@gmail.com">barryjbriggs@gmail.com</a><br />
+            <a href="tel:+1-206-909-2507">(206) 909-2507</a><br />
+            YouTube: <a href="https://www.youtube.com/channel/UCc3N2MUPKDqbIySxF64jwYg">Barry J. Briggs</a><br />
+            Instagram: <a href="https://www.instagram.com/barryjbriggs/">barryjbriggs</a><br />
+        </p>
+    </div>
 
 
-    <h3>Send me a Message!</h3>
-    <form asp-controller="Message" asp-action="SendMessage" method="post">
-        <div class="form-group">
-            <label asp-for="Name">Name (required)</label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
+    <div class="sendMessage">
+        <h3>Send me a Message!</h3>
+        <form asp-controller="Message" asp-action="SendMessage" method="post">
+            <div class="form-group">
+                <label asp-for="Name">Name (required)</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Email">Email (required)</label>
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="Email">Email (required)</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Website">Website</label>
-            <input asp-for="Website" class="form-control" />
-        </div>
+            <div class="form-group">
+                <label asp-for="Website">Website</label>
+                <input asp-for="Website" class="form-control" />
+            </div>
 
-        <div class="form-group">
-            <label asp-for="MessageText">Message (required)</label>
-            <textarea asp-for="MessageText" class="form-control"></textarea>
-            <span asp-validation-for="MessageText" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="MessageText">Message (required)</label>
+                <textarea asp-for="MessageText" class="form-control"></textarea>
+                <span asp-validation-for="MessageText" class="text-danger"></span>
+            </div>
 
-        <button type="submit" class="btn btn-danger">Submit</button>
-    </form>
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </form>
+    </div>
 
 </div>

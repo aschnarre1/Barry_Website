@@ -197,7 +197,74 @@ figcaption {
 }
 
 
-#header{
-    text-align:center;
-    background-color:#f6f6f6;
+.contactMePage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 50px;
+    margin-top:60px;
 }
+
+.getInTouch {
+    width: 50%;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.sendMessage {
+    width: 50%;
+    padding-right: 150px;
+}
+
+
+.contactIntro {
+    font-size: 1.2em;
+    text-align: center;
+    width:60%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+
+@media (max-width: 1200px) {
+    .sendMessage {
+        padding-right: 80px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .contactIntro {
+        font-size: 1em;
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    .contactMePage {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .getInTouch {
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 1.3em;
+    }
+
+    .sendMessage {
+        width: 100%;
+        margin-bottom: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+
+
+
+    #header {
+        text-align: center;
+        background-color: #f6f6f6;
+    }
+

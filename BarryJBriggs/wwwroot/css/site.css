@@ -38,16 +38,16 @@ body {
 
 .videoAndIntro {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 50px;
 }
 
 .highlight_reel {
     width: 50%;
     height: auto;
-    display: inline-block;
+    display: block;
     object-fit: cover;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 
@@ -57,13 +57,71 @@ body {
     padding-right: 20px;
 }
 
+    .intro img {
+        width: 70%; 
+        margin:auto;
+        height: auto; 
+        max-width: 100%; 
+        display: block; 
+    }
+
+
+
+/*Need todo*/
+@media (max-width: 858px) {
+    .videoAndIntro {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .highlight_reel {
+        width: 90%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        margin-top: 0px;
+    }
+
+
+    .intro {
+        display: flex;
+        width: 90%;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .introText {
+        flex: 1;
+        text-align: left;
+    }
+
+        .intro img {
+            width: 40%;
+            height: auto;
+            max-width: 100%;
+            display: block;
+
+        }
+}
+
+
+.specialtiesAndCompanies {
+/*    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 0 auto;
+    width: 100%;*/
+}
+
 
 
 .specialties{
     width:400px;
     height:auto;
     display:inline;
-    padding:10px
+    padding:10px;
 }
 
 .companies {
@@ -71,7 +129,37 @@ body {
     height: auto;
     display: inline;
     padding: 10px;
-    margin-top:0px
+    margin-top: 0px;
+}
+
+
+@media (max-width: 858px) {
+    .companies{
+        width:300px;
+    }
+    .specialties{
+        width:300px;
+    }
+}
+
+@media (max-width: 656px) {
+    .companies {
+        width: 200px;
+    }
+
+    .specialties {
+        width: 200px;
+    }
+}
+
+@media (max-width: 455px) {
+    .companies {
+        width: 150px;
+    }
+
+    .specialties {
+        width: 150px;
+    }
 }
 
 .imageAndAwards {
@@ -92,8 +180,21 @@ body {
 }
 
 
+@media (max-width: 768px) {
+    .imageAndAwards {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .barryCam {
+        display: inline-block;
+        height: auto;
+    }
 
+    .listOfAwards{
+        width:100%;
+    }
+}
 
 
 

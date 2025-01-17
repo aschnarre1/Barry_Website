@@ -1,9 +1,9 @@
 using BarryJBriggs.Services;
-//using DotNetEnv;
+using dotenv.net;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Env.Load();
+DotEnv.Load();
 
 
 

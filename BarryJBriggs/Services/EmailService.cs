@@ -1,27 +1,34 @@
-﻿using System.Net.Mail;
+﻿using System;
+using System.Net.Mail;
 using System.Net;
 
 namespace BarryJBriggs.Services
 {
     public class EmailService
     {
-        private readonly IConfiguration _config;
-
-        public EmailService(IConfiguration config)
-        {
-            _config = config;
-        }
-
         public void SendEmail(string fromEmail, string name, string website, string message)
         {
+            string smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER");
+            string port = Environment.GetEnvironmentVariable("SMTP_PORT");
+            string username = Environment.GetEnvironmentVariable("SMTP_USERNAME");
+            string password = Environment.GetEnvironmentVariable("SMTP_PASSWORD");
+            string adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL");
+
             try
             {
-                var smtpClient = new SmtpClient(_config["EmailSettings:SmtpServer"])
+                if (string.IsNullOrEmpty(smtpServer) ||
+                    string.IsNullOrEmpty(port) ||
+                    string.IsNullOrEmpty(username) ||
+                    string.IsNullOrEmpty(password) ||
+                    string.IsNullOrEmpty(adminEmail))
                 {
-                    Port = int.Parse(_config["EmailSettings:Port"]),
-                    Credentials = new NetworkCredential(
-                        _config["EmailSettings:Username"],
-                        _config["EmailSettings:Password"]),
+                    throw new InvalidOperationException("Missing required environment variables for email configuration.");
+                }
+
+                var smtpClient = new SmtpClient(smtpServer)
+                {
+                    Port = int.Parse(port),
+                    Credentials = new NetworkCredential(username, password),
                     EnableSsl = true,
                 };
 
@@ -33,7 +40,7 @@ namespace BarryJBriggs.Services
                     IsBodyHtml = false,
                 };
 
-                mailMessage.To.Add(_config["EmailSettings:AdminEmail"]);
+                mailMessage.To.Add(adminEmail);
                 smtpClient.Send(mailMessage);
             }
             catch (SmtpException smtpEx)
@@ -47,7 +54,5 @@ namespace BarryJBriggs.Services
                 throw;
             }
         }
-
     }
-
 }

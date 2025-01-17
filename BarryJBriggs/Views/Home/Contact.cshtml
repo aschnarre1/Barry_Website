@@ -29,7 +29,16 @@
 
     <div class="sendMessage">
         <h3>Send me a Message!</h3>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Message"]
+            </div>
+            @TempData.Remove("Message");
+            
+        }
         <form asp-controller="Message" asp-action="SendMessage" method="post">
+            @Html.AntiForgeryToken()
             <div class="form-group">
                 <label asp-for="Name">Name (required)</label>
                 <input asp-for="Name" class="form-control" />
@@ -38,13 +47,13 @@
 
             <div class="form-group">
                 <label asp-for="Email">Email (required)</label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control" type="email" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Website">Website</label>
-                <input asp-for="Website" class="form-control" />
+                <input asp-for="Website" class="form-control" type="url" />
             </div>
 
             <div class="form-group">
@@ -55,6 +64,25 @@
 
             <button type="submit" class="btn btn-danger">Submit</button>
         </form>
+
     </div>
 
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
+<script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nameInput = document.querySelector('[name="Name"]');
+        const emailInput = document.querySelector('[name="Email"]');
+        const websiteInput = document.querySelector('[name="Website"]');
+        const messageInput = document.querySelector('[name="MessageText"]');
+        nameInput.value = DOMPurify.sanitize(nameInput.value);
+        emailInput.value = DOMPurify.sanitize(emailInput.value);
+        websiteInput.value = DOMPurify.sanitize(websiteInput.value);
+        messageInput.value = DOMPurify.sanitize(messageInput.value);
+        this.submit();
+    });
+</script>

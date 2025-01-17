@@ -3,7 +3,7 @@
 }
 
 <div class="text-center">
-    <div class="videoAndIntro">
+    <div class="videoAndIntro fade-up">
         <div class="intro">
             <div class="introText">
                 <h1 class="display-4">
@@ -19,29 +19,29 @@
         </video>
     </div>
 
-    <h2>
+    <h2 class="fade-up">
         My specialties
     </h2>
     <div class="specialtiesAndCompanies ">
-        <img src="~/media/wedding.jpg" alt="Weddings" class="specialties" />
-        <img src="~/media/rollsRoyce.jpg" alt="Brand Promos" class="specialties" />
-        <img src="~/media/realEstateVideo.jpg" alt="Real Estate" class="specialties" />
-        <img src="~/media/travel_pic.jpg" alt="Travel" class="specialties" />
-        <img src="~/media/social_media.jpg" alt="Social Media Content" class="specialties" />
-        <div class="companiesWorkedWith">
+        <img src="~/media/wedding.jpg" alt="Weddings" class="specialties fade-up" />
+        <img src="~/media/rollsRoyce.jpg" alt="Brand Promos" class="specialties fade-up" />
+        <img src="~/media/realEstateVideo.jpg" alt="Real Estate" class="specialties fade-up" />
+        <img src="~/media/travel_pic.jpg" alt="Travel" class="specialties fade-up" />
+        <img src="~/media/social_media.jpg" alt="Social Media Content" class="specialties fade-up" />
+        <div class="companiesWorkedWith fade-up">
             <h3>A few Companies I have Worked With</h3>
         </div>
-        <img src="~/media/kiro-7-logo.jpg" alt="Kiro 7" class="companies" />
-        <img src="~/media/dr_berg.jpg" alt="Dr Berg" class="companies" />
-        <img src="~/media/nordstrom.jpg" alt="Nordstrom" class="companies" />
-        <img src="~/media/rexmont.jpg" alt="Rexmont Real Estate" class="companies" />
-        <img src="~/media/muckleshoot.jpg" alt="Muckleshhot Casino" class="companies" />
-        <img src="~/media/earthy.jpg" alt="Earthy" class="companies" />
-        <img src="~/media/project.jpg" alt="Project" class="companies" />
-        <img src="~/media/heaton-dainard-real-estate-default-logo.jpg" alt="Heaton Dainard Real Estate" class="companies" />
-        <img src="~/media/heaton-dainard-real-estate-default-logo.jpg" alt="Heaton Dainard Real Estate" class="companies" />
+        <img src="~/media/kiro-7-logo.jpg" alt="Kiro 7" class="companies fade-up" />
+        <img src="~/media/dr_berg.jpg" alt="Dr Berg" class="companies fade-up" />
+        <img src="~/media/nordstrom.jpg" alt="Nordstrom" class="companies fade-up" />
+        <img src="~/media/rexmont.jpg" alt="Rexmont Real Estate" class="companies fade-up" />
+        <img src="~/media/muckleshoot.jpg" alt="Muckleshhot Casino" class="companies fade-up" />
+        <img src="~/media/earthy.jpg" alt="Earthy" class="companies fade-up" />
+        <img src="~/media/project.jpg" alt="Project" class="companies fade-up" />
+        <img src="~/media/heaton-dainard-real-estate-default-logo.jpg" alt="Heaton Dainard Real Estate" class="companies fade-up" />
+        <img src="~/media/heaton-dainard-real-estate-default-logo.jpg" alt="Heaton Dainard Real Estate" class="companies fade-up" />
     </div>
-    <div class="recommendation">
+    <div class="recommendation fade-up">
         <p>
             “Barry is not only an extremely talented and hardworking individual, but he is such a kind-hearted and fun person to work with…
             Barry exceeded our expectations, providing us with a professional and enjoyable experience. For these reasons and more, we are
@@ -55,8 +55,8 @@
 
 
 <div class="imageAndAwards">
-    <img src="~/media/barry_camera_cropped.jpg" alt="Sony FX3" class="barryCam" />
-    <div class="listOfAwards">
+    <img src="~/media/barry_camera_cropped.jpg" alt="Sony FX3" class="barryCam fade-up" />
+    <div class="listOfAwards fade-up">
         <h2>Awards</h2>
         <ul>
             <li>
@@ -88,3 +88,25 @@
         </ul>
     </div>
 </div>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const fadeElements = document.querySelectorAll(".fade-up");
+
+        const observer = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            },
+            { threshold: 0.1 } 
+        );
+
+        fadeElements.forEach(el => observer.observe(el));
+    });
+</script>

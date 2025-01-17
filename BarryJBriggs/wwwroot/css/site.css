@@ -203,6 +203,9 @@ body {
 
 
 
+
+/*bottom of home page-----------------------------------------------*/
+
 .portfolio {
     width: 100%;
     height: auto;
@@ -271,10 +274,26 @@ figcaption {
     border-radius: 1000px;
 }
 
-.aboutMeText{
-    font-size:1.2em;
+.aboutMeText {
+    font-size: 1.2em;
+    animation: rollInFromBottom 1s ease-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 
+
+
+@keyframes rollInFromBottom {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
 @media (max-width: 820px) {
     .aboutMe {
@@ -390,3 +409,28 @@ figcaption {
         background-color: #f6f6f6;
     }
 
+
+
+
+@keyframes fadeUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fade-up {
+    opacity: 0; /* Initially hidden */
+    transform: translateY(50px);
+    transition: all 0.5s ease-out;
+}
+
+    .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }

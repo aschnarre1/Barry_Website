@@ -19,6 +19,21 @@ body {
 }
 
 
+
+
+.floatingImage {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floatingImage:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 123, 255, 0.6);
+}
+
+
+
 .container {
     padding-left: 0;
     padding-right: 0;
@@ -37,6 +52,7 @@ body {
     display: block;
     object-fit: cover;
     margin-top: 0px;
+    border-radius: 10px;
 }
 
 
@@ -47,11 +63,13 @@ body {
 }
 
     .intro img {
-        width: 70%; 
-        margin:auto;
-        height: auto; 
-        max-width: 100%; 
-        display: block; 
+        width: 70%;
+        margin: auto;
+        height: auto;
+        max-width: 100%;
+        display: block;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
     }
 
 
@@ -89,20 +107,18 @@ body {
             width: 50%;
             height: auto;
             max-width: 100%;
-            display: block;
+            display: none;
 
         }
 }
 
 
 
-
-
-.specialties{
-    width:400px;
-    height:auto;
-    display:inline;
-    padding:10px;
+.specialties {
+    width: 400px;
+    height: auto;
+    display: inline;
+    padding: 10px;
 }
 
 .companies {
@@ -167,6 +183,8 @@ body {
     display: inline-block;
     height: auto;
     width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
 }
 
 .listOfAwards {
@@ -214,11 +232,6 @@ body {
     margin-bottom: 50px;
 }
 
-
-.container-fluid main {
-    padding-left: 15px;
-    padding-right: 15px;
-}
 
 
 .projects {
@@ -270,8 +283,9 @@ figcaption {
     height: auto;
     display: flex;
     align-items: flex-start;
-    margin-right:50px;
+    margin-right: 50px;
     border-radius: 1000px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
 
 .aboutMeText {
@@ -400,37 +414,42 @@ figcaption {
     }
 }
 
+@media (max-width: 500px) {
+    .contactIntro {
+        width: 95%;
+    }
+}
+
+
+
+#header {
+    text-align: center;
+    background-color: #f6f6f6;
+    width:100%;
+}
 
 
 
 
-    #header {
-        text-align: center;
-        background-color: #f6f6f6;
+    @keyframes fadeUp {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 
-
-
-
-@keyframes fadeUp {
-    from {
+    .fade-up {
+        opacity: 0; /* Initially hidden */
         transform: translateY(50px);
-        opacity: 0;
+        transition: all 0.5s ease-out;
     }
 
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.fade-up {
-    opacity: 0; /* Initially hidden */
-    transform: translateY(50px);
-    transition: all 0.5s ease-out;
-}
-
-    .fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }

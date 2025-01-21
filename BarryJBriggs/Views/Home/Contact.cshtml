@@ -40,31 +40,30 @@
         <form asp-controller="Message" asp-action="SendMessage" method="post">
             @Html.AntiForgeryToken()
             <div class="form-group">
-                <label asp-for="Name">Name (required)</label>
-                <input asp-for="Name" class="form-control" />
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" minlength="3" required/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Email">Email (required)</label>
-                <input asp-for="Email" class="form-control" type="email" />
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" type="email" required />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Website">Website</label>
+                <label asp-for="Website"></label>
                 <input asp-for="Website" class="form-control" type="url" />
             </div>
 
             <div class="form-group">
-                <label asp-for="MessageText">Message (required)</label>
-                <textarea asp-for="MessageText" class="form-control"></textarea>
+                <label asp-for="MessageText"></label>
+                <textarea asp-for="MessageText" class="form-control" minlength="10" required></textarea>
                 <span asp-validation-for="MessageText" class="text-danger"></span>
             </div>
 
             <button type="submit" class="btn btn-danger">Submit</button>
         </form>
-
     </div>
 
 </div>

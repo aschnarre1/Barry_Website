@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\media\castle_video.mp4" />
+    <None Include="wwwroot\robots.txt" />
   </ItemGroup>
 
 </Project>

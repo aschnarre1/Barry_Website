@@ -40,6 +40,16 @@ body {
 }
 
 
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, #555, #777, #555);
+    margin: 50px 0;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .videoAndIntro {
     display: flex;
     align-items: center;

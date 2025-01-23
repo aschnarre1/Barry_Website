@@ -57,7 +57,7 @@ body {
 }
 
 .highlight_reel {
-    width: 50%;
+    width: 55%;
     height: auto;
     display: block;
     object-fit: cover;
@@ -68,12 +68,12 @@ body {
 
 .intro {
     display: inline-block;
-    width: 50%;
+    width: 100%;
     padding-right: 20px;
 }
 
     .intro img {
-        width: 70%;
+        width: 85%;
         margin: auto;
         height: auto;
         max-width: 100%;

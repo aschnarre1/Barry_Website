@@ -8,11 +8,11 @@ namespace BarryJBriggs.Services
     {
         public void SendEmail(string fromEmail, string name, string website, string message)
         {
-            string smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER");
-            string port = Environment.GetEnvironmentVariable("SMTP_PORT");
-            string username = Environment.GetEnvironmentVariable("SMTP_USERNAME");
-            string password = Environment.GetEnvironmentVariable("SMTP_PASSWORD");
-            string adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL");
+            string smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER", EnvironmentVariableTarget.Process);
+            string port = Environment.GetEnvironmentVariable("SMTP_PORT", EnvironmentVariableTarget.Process);
+            string username = Environment.GetEnvironmentVariable("SMTP_USERNAME", EnvironmentVariableTarget.Process);
+            string password = Environment.GetEnvironmentVariable("SMTP_PASSWORD", EnvironmentVariableTarget.Process);
+            string adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL", EnvironmentVariableTarget.Process);
 
             try
             {

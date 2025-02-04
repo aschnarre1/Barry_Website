@@ -126,3 +126,22 @@
         fadeElements.forEach(el => observer.observe(el));
     });
 </script>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var video = document.getElementById("videoPlayer");
+
+      video.play().catch(error => {
+        console.log("Autoplay failed. User interaction required.", error);
+      });
+
+      document.addEventListener("click", function () {
+        if (video.paused) {
+          video.play();
+        }
+      });
+    });
+</script>

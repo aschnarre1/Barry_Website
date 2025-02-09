@@ -72,12 +72,11 @@
     </div>
 </div>
 
-<!-- Custom scripts or custom footer content for page here -->
+@* Custom scripts or custom footer content for page here *@
 @section Scripts {
-    <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.13/dist/jquery.validate.unobtrusive.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await Html.PartialAsync("~/Views/Shared/_ValidationScriptsPartial.cshtml")
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
     <script>
         document.querySelector('form').addEventListener('submit', function (e) {
             e.preventDefault();

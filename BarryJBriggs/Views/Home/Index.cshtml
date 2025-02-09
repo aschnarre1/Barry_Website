@@ -1,5 +1,13 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
+}
+
+<!-- Custom styles or custom header content for page here -->
+@section Styles {
+    <!-- 
+        - Add a css file for this page like index.css, home.css OR add a style tag. 
+        - keep id and classes kabob style, common format. Ex: videoAndIntro -> video-and-intro
+    -->
 }
 
 <div class="text-center">
@@ -11,7 +19,7 @@
                 </h1>
                 <p>Videographer || Video Content Strategist</p>
             </div>
-            <img class ="homeImage" src="~/media/barry_cropped.jpg" alt="A picture of me" />
+            <img class="homeImage" src="~/media/barry_cropped.jpg" alt="A picture of me" />
         </div>
         @* <video autoplay muted loop class="highlight_reel"> *@
         @*     <source src="~/media/websitevideo.mp4" type="video/mp4"> *@
@@ -65,11 +73,7 @@
         </p>
     </div>
 </div>
-
-
-
 <hr class="section-divider" />
-
 <div class="imageAndAwards">
     <img src="~/media/barry_camera_cropped.jpg" alt="Sony FX3" class="barryCam fade-up" />
     <div class="listOfAwards fade-up">
@@ -105,43 +109,46 @@
     </div>
 </div>
 
+<!-- Custom scripts or custom footer content for page here -->
+@section Scripts {
+    <!-- 
+        This is being used in more than one page, would be better to add this to a js file or 
+        cshtml partial and copy the script/cshtml to these @@section Scripts 
+    -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll(".fade-up");
 
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 }
+            );
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const fadeElements = document.querySelectorAll(".fade-up");
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
 
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            },
-            { threshold: 0.1 } 
-        );
+    <!-- Was this to auto play the homepage player? #videoPlayer doesn't exist -->
+    @* <script>        
+        document.addEventListener("DOMContentLoaded", function () {
+            const video = document.getElementById("videoPlayer");
 
-        fadeElements.forEach(el => observer.observe(el));
-    });
-</script>
+            video.play().catch(error => {
+                console.log("Autoplay failed. User interaction required.", error);
+            });
 
-
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var video = document.getElementById("videoPlayer");
-
-      video.play().catch(error => {
-        console.log("Autoplay failed. User interaction required.", error);
-      });
-
-      document.addEventListener("click", function () {
-        if (video.paused) {
-          video.play();
-        }
-      });
-    });
-</script>
+            document.addEventListener("click", function () {
+                if (video.paused) {
+                    video.play();
+                }
+            });
+        });
+    </script> *@
+}

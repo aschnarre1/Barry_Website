@@ -1,8 +1,16 @@
-﻿@{
+﻿@model Message
+
+@{
     ViewData["Title"] = "Contact Me";
 }
-@model Message
 
+<!-- Custom styles or custom header content for page here -->
+@section Styles {
+    <!--
+        - Add a css file for this page like index.css, home.css OR add a style tag.
+        - keep id and classes kabob style, common format. Ex: contactIntro -> contact-intro
+    -->
+}
 
 <div id="header">
    <h1>Contact</h1>
@@ -14,19 +22,20 @@
         for so I can better understand how I can help you.
     </p>
 </div>
-
 <div class="contactMePage">
     <div class="getInTouch">
         <h3>Get in Touch</h3>
         <p>
-            <a href="mailto:barryjbriggs@gmail.com">barryjbriggs@gmail.com</a><br />
-            <a href="tel:+1-206-909-2507">(206) 909-2507</a><br />
-            YouTube: <a href="https://www.youtube.com/channel/UCc3N2MUPKDqbIySxF64jwYg" target="_blank">Barry J. Briggs</a><br />
-            Instagram: <a href="https://www.instagram.com/barryjbriggs/" target="_blank">barryjbriggs</a><br />
+            <a href="mailto:barryjbriggs@gmail.com">barryjbriggs@gmail.com</a>
+            <br />
+            <a href="tel:+1-206-909-2507">(206) 909-2507</a>
+            <br />
+            YouTube: <a href="https://www.youtube.com/channel/UCc3N2MUPKDqbIySxF64jwYg" target="_blank">Barry J. Briggs</a>
+            <br />
+            Instagram: <a href="https://www.instagram.com/barryjbriggs/" target="_blank">barryjbriggs</a>
+            <br />
         </p>
     </div>
-
-
     <div class="sendMessage">
         <h3>Send me a Message!</h3>
         @if (TempData["Message"] != null)
@@ -34,8 +43,8 @@
             <div class="alert alert-success">
                 @TempData["Message"]
             </div>
-            @TempData.Remove("Message");
-            
+            //TempData.Remove() is not necessary, it is only printed once when the page renders. 
+            //If you refresh the page, it disappears unless the user sends another message and triggers another message to appear.          
         }
         <form asp-controller="Message" asp-action="SendMessage" method="post">
             @Html.AntiForgeryToken()
@@ -44,44 +53,44 @@
                 <input asp-for="Name" class="form-control" minlength="3" required/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Email"></label>
                 <input asp-for="Email" class="form-control" type="email" required />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Website"></label>
                 <input asp-for="Website" class="form-control" type="url" />
             </div>
-
             <div class="form-group">
                 <label asp-for="MessageText"></label>
                 <textarea asp-for="MessageText" class="form-control" minlength="10" required></textarea>
                 <span asp-validation-for="MessageText" class="text-danger"></span>
             </div>
-
             <button type="submit" class="btn btn-danger">Submit</button>
         </form>
     </div>
-
 </div>
 
+<!-- Custom scripts or custom footer content for page here -->
+@section Scripts {
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.13/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
-<script>
-    document.querySelector('form').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const nameInput = document.querySelector('[name="Name"]');
-        const emailInput = document.querySelector('[name="Email"]');
-        const websiteInput = document.querySelector('[name="Website"]');
-        const messageInput = document.querySelector('[name="MessageText"]');
-        nameInput.value = DOMPurify.sanitize(nameInput.value);
-        emailInput.value = DOMPurify.sanitize(emailInput.value);
-        websiteInput.value = DOMPurify.sanitize(websiteInput.value);
-        messageInput.value = DOMPurify.sanitize(messageInput.value);
-        this.submit();
-    });
-</script>
+            const nameInput = document.querySelector('[name="Name"]');
+            const emailInput = document.querySelector('[name="Email"]');
+            const websiteInput = document.querySelector('[name="Website"]');
+            const messageInput = document.querySelector('[name="MessageText"]');
+            nameInput.value = DOMPurify.sanitize(nameInput.value);
+            emailInput.value = DOMPurify.sanitize(emailInput.value);
+            websiteInput.value = DOMPurify.sanitize(websiteInput.value);
+            messageInput.value = DOMPurify.sanitize(messageInput.value);
+            this.submit();
+        });
+    </script>
+}

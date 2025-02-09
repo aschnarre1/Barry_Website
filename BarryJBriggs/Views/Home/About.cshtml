@@ -1,6 +1,15 @@
 ﻿@{
     ViewData["Title"] = "About Me";
 }
+
+<!-- Custom styles or custom header content for page here -->
+@section Styles {
+    <!--
+        - Add a css file for this page like index.css, home.css OR add a style tag.
+        - keep id and classes kabob style, common format. Ex: aboutMeParagrapph -> about-me-paragraph
+    -->
+}
+
 <div id="header">
     <h1>About</h1>
 </div>
@@ -31,36 +40,38 @@
                 <li>
                     Such projects have reached a total of <b>20 million</b> views.
                 </li>
-                <li>Creates cinematic travel documentaries on YouTube for an audience of over 16k subscribers. Such travel endeavors include The Philippines, Hawaii, The Pacific Northwest and 
+                <li>
+                    Creates cinematic travel documentaries on YouTube for an audience of over 16k subscribers. Such travel endeavors include The Philippines, Hawaii, The Pacific Northwest and 
                     more. Produces exceptional video content for businesses from all over the world and wedding clients who want their special day remembered in its best element.
                 </li>
             </ul>
-
-        </div>
-       
+        </div>       
     </div>
 </div>
 
+<!-- Custom scripts or custom footer content for page here -->
+@section Scripts {
+    <!--
+        This is being used in more than one page, would be better to add this to a js file or
+        cshtml partial and copy the script/cshtml to these @@section Scripts
+    -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll(".fade-up");
 
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 }
+            );
 
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const fadeElements = document.querySelectorAll(".fade-up");
-
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        fadeElements.forEach(el => observer.observe(el));
-    });
-</script>
-
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+}

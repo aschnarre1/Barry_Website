@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BarryJBriggs.styles.css" asp-append-version="true" />
 
-    <!-- 
+    @* 
         Adding this render section allows page specific styles and/or content necessary in the header, 
         please refer to '@@section Styles' in cshtml pages. When the page get requested, this line of 
         code will get replaced with the content in '@@section Styles'.  
-    -->
+    *@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
@@ -58,11 +58,11 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <!-- 
+    @* 
         This is where page specific scripts or custom footer content gets rendered.
         Please refer to '@@section Scripts' in each page. When a page gets requested, 
-        this line of code will get replaced with the content within '@@section Scripts'.
-    -->
+        this line of code will get replaced with the content within '@@section Scripts'. 
+    *@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

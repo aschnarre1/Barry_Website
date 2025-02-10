@@ -7,7 +7,7 @@ services:
     # run_command: dotnet out/BarryJBriggs.dll
     # build_command: dotnet publish -c Release -o out
     source_dir: BarryJBriggs
-    dockerfile_path: BarryJBriggs/Dockerfile
+    dockerfile_path: Dockerfile
     environment_slug: docker
     instance_size_slug: basic-xxs
     http_port: 8080

@@ -1,0 +1,12 @@
+name: BarryJBriggsApp
+services:
+  - name: web
+    github:
+      repo: yourusername/Barry_Website
+      branch: master
+    run_command: dotnet out/BarryJBriggs.dll
+    build_command: dotnet publish -c Release -o out
+    source_dir: BarryJBriggs
+    environment_slug: dotnetcore
+    instance_size_slug: basic-xxs
+    http_port: 8080

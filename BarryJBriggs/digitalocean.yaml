@@ -2,7 +2,7 @@ name: BarryJBriggsApp
 services:
   - name: web
     github:
-      repo: yourusername/Barry_Website
+      repo: aschnarre1/Barry_Website
       branch: master
     run_command: dotnet out/BarryJBriggs.dll
     build_command: dotnet publish -c Release -o out

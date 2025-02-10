@@ -4,9 +4,10 @@ services:
     github:
       repo: aschnarre1/Barry_Website
       branch: master
-    run_command: dotnet out/BarryJBriggs.dll
-    build_command: dotnet publish -c Release -o out
+    # run_command: dotnet out/BarryJBriggs.dll
+    # build_command: dotnet publish -c Release -o out
     source_dir: BarryJBriggs
-    environment_slug: dotnetcore
+    dockerfile_path: BarryJBriggs/Dockerfile
+    environment_slug: docker
     instance_size_slug: basic-xxs
     http_port: 8080

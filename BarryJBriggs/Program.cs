@@ -9,6 +9,7 @@ DotEnv.Load();
 //port listener
 builder.WebHost.UseUrls("http://0.0.0.0:8080");
 
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<EmailService>();
 
@@ -32,5 +33,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapGet("/health", () => Results.Ok("Healthy"));
 
 app.Run();

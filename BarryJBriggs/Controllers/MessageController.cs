@@ -12,10 +12,15 @@ namespace BarryJBriggs.Controllers
     {
         private readonly EmailService _emailService;
         private static readonly HttpClient client = new HttpClient();
-
         private static readonly string RECAPTCHA_SECRET = Environment.GetEnvironmentVariable("CAPTCHA_KEY");
 
-
+        static MessageController()
+        {
+            if (string.IsNullOrEmpty(RECAPTCHA_SECRET))
+            {
+                Console.WriteLine("⚠️ WARNING: CAPTCHA_KEY environment variable is not set!");
+            }
+        }
 
         public MessageController(EmailService emailService)
         {
@@ -26,6 +31,7 @@ namespace BarryJBriggs.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SendMessage(Message model, string gRecaptchaResponse)
         {
+            // ✅ reCAPTCHA Validation
             if (string.IsNullOrEmpty(gRecaptchaResponse) || !await VerifyRecaptcha(gRecaptchaResponse))
             {
                 ModelState.AddModelError("", "reCAPTCHA verification failed. Please try again.");
@@ -56,7 +62,8 @@ namespace BarryJBriggs.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", $"Error sending email: {ex.Message}");
+                Console.WriteLine($"❌ Error sending email: {ex.Message}");
+                ModelState.AddModelError("", "An error occurred while sending your message. Please try again later.");
             }
 
             return View("~/Views/Home/Contact.cshtml", model);
@@ -64,6 +71,12 @@ namespace BarryJBriggs.Controllers
 
         private async Task<bool> VerifyRecaptcha(string recaptchaResponse)
         {
+            if (string.IsNullOrEmpty(RECAPTCHA_SECRET))
+            {
+                Console.WriteLine("⚠️ reCAPTCHA Secret Key is missing!");
+                return false; // Prevent API call if secret key is missing
+            }
+
             var response = await client.PostAsync(
                 $"https://www.google.com/recaptcha/api/siteverify?secret={RECAPTCHA_SECRET}&response={recaptchaResponse}",
                 null

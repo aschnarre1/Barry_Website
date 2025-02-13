@@ -37,7 +37,7 @@
             @TempData.Remove("Message");
             
         }
-        <form asp-controller="Message" asp-action="SendMessage" method="post">
+        <form asp-controller="Message" asp-action="SendMessage" method="post" id="contact-form">
             @Html.AntiForgeryToken()
             <div class="form-group">
                 <label asp-for="Name"></label>
@@ -73,28 +73,18 @@
 </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
-<script>
-    document.querySelector('form').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const nameInput = document.querySelector('[name="Name"]');
-        const emailInput = document.querySelector('[name="Email"]');
-        const websiteInput = document.querySelector('[name="Website"]');
-        const messageInput = document.querySelector('[name="MessageText"]');
-        nameInput.value = DOMPurify.sanitize(nameInput.value);
-        emailInput.value = DOMPurify.sanitize(emailInput.value);
-        websiteInput.value = DOMPurify.sanitize(websiteInput.value);
-        messageInput.value = DOMPurify.sanitize(messageInput.value);
-        this.submit();
-    });
-</script>
-
 
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
 <script>
     document.getElementById('contact-form').addEventListener('submit', function (e) {
+        document.getElementById('Name').value = DOMPurify.sanitize(document.getElementById('Name').value);
+        document.getElementById('Email').value = DOMPurify.sanitize(document.getElementById('Email').value);
+        document.getElementById('Website').value = DOMPurify.sanitize(document.getElementById('Website').value);
+        document.getElementById('MessageText').value = DOMPurify.sanitize(document.getElementById('MessageText').value);
+
         let recaptchaResponse = document.getElementById('g-recaptcha-response').value;
         if (!recaptchaResponse) {
             e.preventDefault();

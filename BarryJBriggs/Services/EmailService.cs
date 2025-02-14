@@ -1,18 +1,18 @@
-﻿using System;
-using System.Net.Mail;
+﻿using System.Net.Mail;
 using System.Net;
 
 namespace BarryJBriggs.Services
 {
     public class EmailService
     {
-        public void SendEmail(string fromEmail, string name, string website, string message)
+        //Making this asynchronous, since .NET can handle multiple threads, this will help with performance
+        public async Task SendEmail(string fromEmail, string name, string website, string message)
         {
-            string smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER", EnvironmentVariableTarget.Process);
-            string port = Environment.GetEnvironmentVariable("SMTP_PORT", EnvironmentVariableTarget.Process);
-            string username = Environment.GetEnvironmentVariable("SMTP_USERNAME", EnvironmentVariableTarget.Process);
-            string password = Environment.GetEnvironmentVariable("SMTP_PASSWORD", EnvironmentVariableTarget.Process);
-            string adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL", EnvironmentVariableTarget.Process);
+            string? smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER", EnvironmentVariableTarget.Process);
+            string? port = Environment.GetEnvironmentVariable("SMTP_PORT", EnvironmentVariableTarget.Process);
+            string? username = Environment.GetEnvironmentVariable("SMTP_USERNAME", EnvironmentVariableTarget.Process);
+            string? password = Environment.GetEnvironmentVariable("SMTP_PASSWORD", EnvironmentVariableTarget.Process);
+            string? adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL", EnvironmentVariableTarget.Process);
 
             try
             {
@@ -41,7 +41,8 @@ namespace BarryJBriggs.Services
                 };
 
                 mailMessage.To.Add(adminEmail);
-                smtpClient.Send(mailMessage);
+
+                await smtpClient.SendMailAsync(mailMessage);
             }
             catch (SmtpException smtpEx)
             {

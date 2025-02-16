@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿//using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace BarryJBriggs.Models
@@ -26,12 +26,10 @@ namespace BarryJBriggs.Models
 
         public string? Website { get; set; }
 
-
+        [Display(Name = "Message")]
         [Required(ErrorMessage = "Message is required")]
         [MinLength(3, ErrorMessage = "Name must be at least 10 characters long")]
         [StringLength(500, ErrorMessage = "Message must be less than 500 characters")]
         public required string MessageText { get; set; }
-
-
     }
 }

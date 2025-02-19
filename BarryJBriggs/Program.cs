@@ -8,14 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 DotEnv.Load();
 
 
-if (builder.Environment.IsDevelopment())
-{
-    builder.WebHost.UseUrls("http://localhost:5000");
-}
-else
-{
-    builder.WebHost.UseUrls("http://0.0.0.0:8080");
-}
+//if (builder.Environment.IsDevelopment())
+//{
+//    builder.WebHost.UseUrls("http://localhost:5000");
+//}
+//else
+//{
+//    builder.WebHost.UseUrls("http://0.0.0.0:8080");
+//}
 
 
 builder.Services.AddControllersWithViews();

@@ -52,6 +52,28 @@
         </main>
     </div>
 
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll(".fade-up");
+
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 }
+            );
+
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
     <footer class="border-top footer text-muted">
     </footer>
     @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@

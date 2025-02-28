@@ -5,7 +5,7 @@
 <div id="header">
     <h1>Works</h1>
 </div>
-<img src="~/media/portfolio_pic_cropped.jpg" class="portfolio"/>
+<img src="~/media/portfolio_pic_cropped.jpg" class="portfolio fade-up" />
 <h3 class="worksSection fade-up" id="travel"><b>Travel</b></h3>
 <div class="projects">
         <figure class="fade-up">
@@ -133,22 +133,3 @@
     </figure>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const fadeElements = document.querySelectorAll(".fade-up");
-
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        fadeElements.forEach(el => observer.observe(el));
-    });
-</script>

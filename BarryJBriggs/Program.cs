@@ -8,15 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 DotEnv.Load();
 
 
-//if (builder.Environment.IsDevelopment())
-//{
-//    builder.WebHost.UseUrls("http://localhost:5000");
-//}
-//else
-//{
-//    builder.WebHost.UseUrls("http://0.0.0.0:8080");
-//}
-
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<EmailService>();
@@ -51,6 +42,19 @@ app.UseResponseCompression();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Host.Host.StartsWith("www."))
+    {
+        var newUrl = $"https://barryjbriggs.com{context.Request.Path}{context.Request.QueryString}";
+        context.Response.Redirect(newUrl, true);
+        return;
+    }
+    await next();
+});
+
+
 
 app.UseAuthorization();
 

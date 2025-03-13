@@ -45,14 +45,17 @@ app.UseRouting();
 
 app.Use(async (context, next) =>
 {
-    if (context.Request.Host.Host.StartsWith("www."))
+    var host = context.Request.Host.Value;
+    if (host.StartsWith("www."))
     {
-        var newUrl = $"https://barryjbriggs.com{context.Request.Path}{context.Request.QueryString}";
-        context.Response.Redirect(newUrl, true);
+        var newHost = host.Replace("www.", "");
+        var newUrl = $"https://{newHost}{context.Request.Path}{context.Request.QueryString}";
+        context.Response.Redirect(newUrl, permanent: true);
         return;
     }
     await next();
 });
+
 
 
 

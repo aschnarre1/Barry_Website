@@ -1,0 +1,24 @@
+﻿@{
+    var sections = (IEnumerable<Section>)ViewBag.Sections;
+}
+<form method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <label>Section</label>
+    <select name="sectionId" required>
+        @foreach (var s in sections)
+        {
+            <option value="@s.Id">@s.Name</option>
+        }
+    </select>
+
+    <label>PNG</label>
+    <input type="file" name="image" accept=".jpg,.jpeg,.png" required />
+
+    <label>Caption</label>
+    <input name="caption" maxlength="220" required />
+
+    <label>YouTube URL</label>
+    <input name="youtubeUrl" type="url" required />
+
+    <button type="submit">Add Work</button>
+</form>

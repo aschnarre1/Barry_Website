@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<BarryJBriggs.Models.Section>
+
 @{
     ViewData["Title"] = "Works";
 }
@@ -6,166 +7,19 @@
     <h1>Works</h1>
 </div>
 <img src="~/media/portfolio_pic_cropped.jpg" class="portfolio fade-up" />
-<h3 class="worksSection fade-up" id="travel"><b>Travel</b></h3>
-<div class="projects">
-        <figure class="fade-up">
-        <a href="https://www.youtube.com/watch?v=r4Q5eyR3jeI" target="_blank">
-                <img src="~/media/philippinesthumbnail.jpg" alt="" class="floatingImage" />
-                <figcaption>How to Travel to Palawan Philippines in 2025 | A Cinematic Guide</figcaption>
-            </a>
-        </figure>
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=ubGff56GOSc" target="_blank">
-                <img src="~/media/paradise.jpg" alt="" class="floatingImage" />
-                <figcaption>Philippine Airlines Cinematic Spec Commercial</figcaption>
-            </a>
-        </figure>
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=ulqUkliCUWs" target="_blank">
-                <img src="~/media/the_philippines.jpg" alt="Why I Traveled To The Philippines This Year | A Cinematic Travel Film" class="floatingImage" />
-                <figcaption>“Why I Traveled To The Philippines This Year | A Cinematic Travel Film” (2023)</figcaption>
-            </a>
-        </figure>
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=u32InR_dXnM" target="_blank">
-                <img src="~/media/returning.jpg" alt="" class="floatingImage" />
-                <figcaption>“Why I Came Back To The Philippines This Year | PART ONE | Siargao & Balabac” (2024)</figcaption>
-            </a>
-        </figure>
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=ElrAZmdN9AI" target="_blank">  
-                <img src="~/media/pnw.jpg" alt="" class="floatingImage" />
-                <figcaption>TRAVEL TO THE PACIFIC NORTHWEST 4K | A Cinematic Travel Film</figcaption>
-            </a>
-        </figure>
-</div>
 
-<h3 class="worksSection fade-up" id="hotelsAndResorts"><b>Hotels and Resorts</b></h3>
-<div class="projects">
-    <figure class="fade-up">
-        <a href="https://www.youtube.com/watch?v=1-KCVkAxpZA" target="_blank">
-            <img src="~/media/resort.jpg" alt="" class="floatingImage" />
-            <figcaption>Cauayan Island Resort</figcaption>
-        </a>
-    </figure>
-    <figure class="fade-up">
-        <a href="https://drive.google.com/file/d/1vpFfRNpPejZZHuKRftT1o5I2OU7UfBXW/view" target="_blank">
-            <img src="~/media/unwnd.jpg" alt="" class="floatingImage" />
-            <figcaption>UNWND Boutique Hotel</figcaption>
-        </a>
-    </figure>
-
-    <figure class="fade-up">
-        <a href="https://drive.google.com/file/d/1TjlXQmxF5X7TUQNscEEaNSTMTtgmQxwG/view" target="_blank">
-            <img src="~/media/chellie.jpg" alt="" class="floatingImage" />
-            <figcaption>Chellie Rose Resort</figcaption>
-        </a>
-    </figure>
-
-    <figure class="fade-up">
-        <a href="https://drive.google.com/file/d/1qOZzKlYIikGEXq0Ote0_G2Yj59xmAibZ/view" target="_blank">
-            <img src="~/media/elNido.jpg" alt="" class="floatingImage" />
-            <figcaption>El Nido Garden Resort</figcaption>
-        </a>
-    </figure>
-</div>
-
-<h3 class="worksSection fade-up" id="realEsate"><b>Real Estate</b></h3>
-<div class="projects">
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=VyRUa282dSA" target="_blank">
-                <img src="~/media/house.jpg" alt="" class="floatingImage" />
-                <figcaption>ProjectRE | Real Estate</figcaption>
-            </a>
-        </figure>
-
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=Ua3Qw0vE0rg" target="_blank">  
-                <img src="~/media/big_house.jpg" alt="" class="floatingImage" />
-                <figcaption>Heaton Dainard Real Estate | ProjectRE</figcaption>
-            </a>
-        </figure>
-</div>
-
-
-<h3 class="worksSection fade-up" id="socialMedia"><b>Social Media</b></h3>
-<div class="projects">
-    <figure class="fade-up">
-        <a href="https://www.youtube.com/shorts/UmSzGNzPTzo" target="_blank">
-            <img src="~/media/drberg.jpg" alt="" class="floatingImage" />
-            <figcaption>All these are nutritional deficiencies - 6,000,000 views</figcaption>
-        </a>
-    </figure>
-
-    <figure class="fade-up">
-        <a href="https://www.tiktok.com/@@drbergofficial/video/7458673105578347807" target="_blank">
-            <img src="~/media/social_one.jpg" alt="" class="floatingImage" />
-            <figcaption>How to lose 5 lbs REALLY fast!</figcaption>
-        </a>
-    </figure>
-
-    <figure class="fade-up">
-        <a href="https://www.youtube.com/watch?v=_SQFqMhMGBM" target="_blank">
-            <img src="~/media/social_two.jpg" alt="" class="floatingImage" />
-            <figcaption>Reacting to The Joe Rogan Experience #1957</figcaption>
-        </a>
-    </figure>
-
-    <figure class="fade-up">
-        <a href="https://www.instagram.com/reel/C_drN1RSjHa/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" target="_blank">
-            <img src="~/media/social_three.jpg" alt="" class="floatingImage" />
-            <figcaption>Flip White promotion</figcaption>
-        </a>
-    </figure>
-</div>
-
-
-
-<h3 class="worksSection fade-up" id="creativeProjects"><b>Creative Projects</b></h3>
-<div class="projects">
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=oPT-5k9IKC4" target="_blank">
-                <img src="~/media/filmmaker_showreel.jpg" alt="" class="floatingImage" />
-                <figcaption>My latest demo reel</figcaption>
-            </a>
-        </figure>
-
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=ifZeKYNTxys" target="_blank">
-                <img src="~/media/mercedes.jpg" alt="" class="floatingImage" />
-                <figcaption>Mercedes Benz | Zafar Khalilov</figcaption>
-            </a>
-        </figure>
-
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=zm-xtcIQQCc" target="_blank">
-                <img src="~/media/425_motorsports.jpg" alt="" class="floatingImage" />
-                <figcaption>425 Motorsports</figcaption>
-            </a>
-        </figure>
-
-        <figure class="fade-up">
-            <a href="https://www.youtube.com/watch?v=5zamntoxGqM" target="_blank">
-                <img src="~/media/the_woman.jpg" alt="" class="floatingImage" />
-                <figcaption>“The Woman” (2022) dir. Rose Kreider. I was Cinematographer and Editor of this Feature Film.</figcaption>
-            </a>
-        </figure>
-</div>
-
-
-<h3 class="worksSection fade-up" id="weddings"><b>Weddings</b></h3>
-<div class="projects">
-    <figure class="fade-up">
-        <a href="https://www.youtube.com/watch?v=anTnLbXdy2I" target="_blank">
-            <img src="~/media/wedding.jpg" alt="" class="floatingImage" />
-            <figcaption>Kianna + Jesus Romo | Aug. 5th 2023″ A Cinematic Wedding Film</figcaption>
-        </a>
-    </figure>
-    <figure class="fade-up">
-        <a href="https://drive.google.com/file/d/1nFMQ-uBmKh12p9CuIQiBEAaui7Qe1GQJ/view?ts=67db94e6" target="_blank">
-            <img src="~/media/vivian_and_jasmine.jpg" alt="" class="floatingImage" />
-            <figcaption>Vivian + Jasmine's Proposal</figcaption>
-        </a>
-    </figure>
-</div>
-
+@foreach (var s in Model)
+{
+    <h3 class="worksSection fade-up" id="@s.Slug"><b>@s.Name</b></h3>
+    <div class="projects">
+        @foreach (var i in s.Items.OrderBy(x => x.CreatedUtc))
+        {
+            <figure class="fade-up">
+                <a href="https://youtu.be/@i.YoutubeId" target="_blank" rel="noopener">
+                    <img src="@i.ImageUrl" alt="" class="floatingImage" />
+                    <figcaption class="worksCaption">@i.Caption</figcaption>
+                </a>
+            </figure>
+        }
+    </div>
+}

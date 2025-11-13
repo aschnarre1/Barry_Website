@@ -1,0 +1,15 @@
+﻿@model BarryJBriggs.Models.AboutPage
+@{
+    ViewData["Title"] = "Edit About";
+}
+<h2>Edit About</h2>
+<form method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <label>Content (HTML allowed)</label>
+    <textarea name="html" rows="18" style="width:100%">@Model.Html</textarea>
+
+    <button type="submit">Save</button>
+</form>
+

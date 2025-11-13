@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BarryJBriggs.Models.WorkItem>
+
+@{
+    var companies = (IEnumerable<BarryJBriggs.Models.Company>)ViewBag.Companies ?? Enumerable.Empty<BarryJBriggs.Models.Company>();
+}
+
+
+<h2>Works</h2>
+<p><a href="/admin/works/add">Add Company</a></p>
+<table>
+    <thead><tr><th>Thumb</th><th>Caption</th><th>Section</th><th>Added</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var w in Model)
+        {
+            <tr>
+                <td><img src="@w.ImageUrl" alt="" style="height:60px" /></td>
+                <td>@w.Caption</td>
+                <td>@w.Section?.Name</td>
+                <td>@w.CreatedUtc.ToLocalTime()</td>
+                <td>
+                    <form method="post" action="/admin/works/@w.Id/delete" onsubmit="return confirm('Delete this work?');">
+                        @Html.AntiForgeryToken()
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<h2>Companies</h2>
+<p><a href="/admin/companies/add">Add Company</a></p>
+<table>
+    <thead><tr><th>Logo</th><th>Name</th><th>Sort</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var c in companies)
+        {
+            <tr>
+                <td><img src="@c.ImageUrl" alt="@c.Name" style="height:40px" /></td>
+                <td>@c.Name</td>
+                <td>@c.SortOrder</td>
+                <td>
+                    <form method="post" action="/admin/companies/@c.Id/delete" onsubmit="return confirm('Delete this company?');">
+                        @Html.AntiForgeryToken()
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

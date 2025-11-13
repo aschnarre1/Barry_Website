@@ -1,42 +1,20 @@
-﻿@{
+﻿@model BarryJBriggs.Models.AboutPage
+@{
     ViewData["Title"] = "About Me";
 }
 <div id="header">
     <h1>About</h1>
 </div>
-<div class="aboutMe fade-up">
+<div class="fade-up">
+    <div class="aboutMe fade-up">
     <img src="~/media/barry_aboutMe.jpg" alt="Me" class="aboutMeImg" />
     <div class="aboutMeParagraph">
-        <h3>Videographer, editor, cinematographer</h3>
-        <div class="aboutMeText">
-            <ul>
-                <li>Created my first video in fifth grade, sparking a lifelong passion for storytelling and filmmaking.</li>
-                <li>Attended the University of Southern California School of Cinematic Arts in 2014, solidifying my passion for film.</li>
-                <li>
-                    Produced the award-winning short film <strong>“El Doggo”</strong>, which:
-                    <ul>
-                        <li>Was screened at the National Film Festival for Talented Youth in 2015.</li>
-                        <li>Won “Best Emerging Northwest Filmmaker.”</li>
-                    </ul>
-                </li>
-                <li>Graduated from Washington State University in 2019, serving as Vice President of the Wazzu Film Club and contributing to student-run productions like Cable 8 Productions.</li>
-                <li>
-                    Founded <strong>Barry J. Briggs Films LLC</strong>, delivering high-quality video content for clients such as:
-                    <ul>
-                        <li>Dr. Berg Nutritionals</li>
-                        <li>Muckleshoot Casino Resort</li>
-                        <li>KIRO 7 News</li>
-                    </ul>
-                </li>
-                <li>
-                    Such projects have reached a total of <b>20 million</b> views.
-                </li>
-                <li>Creates cinematic travel documentaries on YouTube for an audience of over 16k subscribers. Such travel endeavors include The Philippines, Hawaii, The Pacific Northwest and 
-                    more. Produces exceptional video content for businesses from all over the world and wedding clients who want their special day remembered in its best element.
-                </li>
-            </ul>
-
-        </div>
-       
+  @if (Model is null || string.IsNullOrWhiteSpace(Model.Html)) {
+    <p>Nothing here yet.</p>
+  } else {
+    @Html.Raw(Model.Html)  
+  }
+      </div>
     </div>
 </div>
+

@@ -26,33 +26,46 @@
         <a href="Home/Works#weddings">
             <img src="~/media/weddings_home.jpg" alt="Weddings" class="specialties fade-up" />
         </a>
-        <a href="Home/Works#hotelsAndResorts">
+        <a href="Home/Works#hotels-and-resorts">
             <img src="~/media/hotelsHome.jpg" alt="Hotels And Resorts" class="specialties fade-up" />
         </a>
-        <a href="Home/Works#realEsate">
+        <a href="Home/Works#real-estate">
             <img src="~/media/real_estate_home.jpg" alt="Real Estate" class="specialties fade-up" />
         </a>
         <a href="Home/Works#travel">
             <img src="~/media/travel_home.jpg" alt="Travel" class="specialties fade-up" />
         </a>
-        <a href="Home/Works#socialMedia">
+        <a href="Home/Works#social-media">
             <img src="~/media/social_media_home.jpg" alt="Social Media Content" class="specialties fade-up" />
         </a>
-        <a href="Home/Works#creativeProjects">
+        <a href="Home/Works#creative-projects">
             <img src="~/media/creative_projects_home.jpg" alt="Creative Projects" class="specialties fade-up" />
         </a>
         <hr class="section-divider" />
-        <div class="companiesWorkedWith fade-up">
+@*         <div class="companiesWorkedWith fade-up">
             <h3>A Few Companies I Have Worked With</h3>
-        </div>
-        <img src="~/media/kiro-7-logo.jpg" alt="Kiro 7" class="companies fade-up" />
+        </div> *@
+@*         <img src="~/media/kiro-7-logo.jpg" alt="Kiro 7" class="companies fade-up" />
         <img src="~/media/dr_berg.jpg" alt="Dr Berg" class="companies fade-up" />
         <img src="~/media/nordstrom.jpg" alt="Nordstrom" class="companies fade-up" />
         <img src="~/media/rexmont.jpg" alt="Rexmont Real Estate" class="companies fade-up" />
         <img src="~/media/muckleshoot.jpg" alt="Muckleshoot Casino" class="companies fade-up" />
         <img src="~/media/earthy.jpg" alt="Earthy" class="companies fade-up" />
         <img src="~/media/project.jpg" alt="Project" class="companies fade-up" />
-        <img src="~/media/heaton-dainard-real-estate-default-logo.jpg" alt="Heaton Dainard Real Estate" class="companies fade-up" />
+        <img src="~/media/heaton-dainard-real-estate-default-logo.jpg" alt="Heaton Dainard Real Estate" class="companies fade-up" /> *@
+
+        @{
+            var companies = (IEnumerable<BarryJBriggs.Models.Company>)ViewBag.Companies ?? Enumerable.Empty<BarryJBriggs.Models.Company>();
+        }
+        <div class="companiesWorkedWith fade-up">
+            <h3>A Few Companies I Have Worked With</h3>
+        </div>
+        @foreach (var c in companies)
+        {
+            <img src="@c.ImageUrl" alt="@c.Name" class="companies fade-up" />
+        }
+
+
 
     </div>
     <hr class="section-divider" />
@@ -104,5 +117,6 @@
         </ul>
     </div>
 </div>
+
 
 

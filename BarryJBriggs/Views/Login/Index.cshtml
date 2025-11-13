@@ -1,0 +1,23 @@
+﻿<h1>Admin Login</h1>
+<form asp-controller="Login" asp-action="Index" method="post">
+    @Html.AntiForgeryToken()
+    <input name="email" type="email" required />
+    <input name="password" type="password" required />
+    <button type="submit">Log in</button>
+</form>
+
+
+@if(User.Identity.IsAuthenticated)
+{
+    <p>Welcome, @User.Identity.Name!</p>
+    <form asp-controller="Login" asp-action="Logout" method="post">
+        <button type="submit">Log out</button>
+    </form>
+    <p><a asp-controller="AdminSections" asp-action="Add" method="get">Add Sections</a></p>
+    <p><a asp-controller="AdminWorks" asp-action="Add" method="get">Add Works</a></p>
+    <p><a asp-controller="AdminWorks" asp-action="List" method="get">List Works and Comapnies Worked With</a></p>
+    <p><a asp-controller="AdminWorks" asp-action="AddCompany" method="get">Add Company</a></p>
+    <p><a asp-controller="AdminPages" asp-action="EditAbout">Edit About</a></p>
+
+}
+

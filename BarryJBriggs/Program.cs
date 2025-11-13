@@ -1,32 +1,35 @@
+using BarryJBriggs.Data;
 using BarryJBriggs.Services;
 using dotenv.net;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using System.IO.Compression;
 
 var builder = WebApplication.CreateBuilder(args);
 
 DotEnv.Load();
 
-
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<EmailService>();
-
+builder.Services.AddDbContext<AppDb>(o => o.UseSqlite("Data Source=app.db"));
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
-// Configure Compression level
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-
-
-// Add Response compression services
-builder.Services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
-
-builder.Services.AddResponseCompression(options =>
+builder.Services.Configure<GzipCompressionProviderOptions>(o => o.Level = CompressionLevel.Fastest);
+builder.Services.AddResponseCompression(o =>
 {
-    options.Providers.Add<GzipCompressionProvider>();
-    options.EnableForHttps = true;
+    o.Providers.Add<GzipCompressionProvider>();
+    o.EnableForHttps = true;
 });
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(o =>
+    {
+        o.LoginPath = "/login";
+        o.AccessDeniedPath = "/login";
+    });
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -38,10 +41,10 @@ if (!app.Environment.IsDevelopment())
 
 
 app.UseResponseCompression();
-
 app.UseStaticFiles();
-
 app.UseRouting();
+app.UseAuthentication();   
+app.UseAuthorization();
 
 app.Use(async (context, next) =>
 {
@@ -55,11 +58,6 @@ app.Use(async (context, next) =>
     }
     await next();
 });
-
-
-
-
-app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

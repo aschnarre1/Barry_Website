@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Add Company";
+}
+<form method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <label>Name</label>
+    <input name="name" required />
+    <label>Sort order</label>
+    <input name="sortOrder" type="number" value="0" />
+    <label>Logo (jpg/jpeg/png)</label>
+    <input type="file" name="logo" accept=".jpg,.jpeg,.png" required />
+    <button type="submit">Add Company</button>
+</form>

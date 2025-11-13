@@ -6,13 +6,19 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using System.IO.Compression;
 
+DotEnv.Load();
+
 var builder = WebApplication.CreateBuilder(args);
 
-DotEnv.Load();
+var connectionString = builder.Configuration.GetConnectionString("AppDb")
+                      ?? "Data Source=app.db"; 
+
+builder.Services.AddDbContext<AppDb>(options =>
+    options.UseSqlite(connectionString));
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<EmailService>();
-builder.Services.AddDbContext<AppDb>(o => o.UseSqlite("Data Source=app.db"));
+
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 builder.Services.Configure<GzipCompressionProviderOptions>(o => o.Level = CompressionLevel.Fastest);
@@ -39,11 +45,16 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDb>();
+    db.Database.Migrate();
+}
 
 app.UseResponseCompression();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseAuthentication();   
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.Use(async (context, next) =>
